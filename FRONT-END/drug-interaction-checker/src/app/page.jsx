@@ -1,6 +1,6 @@
 "use client"; // required for using hooks in Next.js App Router
 import { useEffect, useState } from "react";
-const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 console.log("BASE_URL =", BASE_URL);
 
 import styles from "./page.module.css";
