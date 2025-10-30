@@ -40,7 +40,7 @@ app.get("/", (req,res)=>{
     res.status(500).json({error: "Server Error"});
   }
 });*/
-app.get("/drugs", async (req, res) => {
+app.get("/api/drugs", async (req, res) => {
   try {
     const query = req.query.q || "";
     console.log("Querying drugs with:", query); // <-- add this
@@ -57,7 +57,7 @@ app.get("/drugs", async (req, res) => {
 });
 
 
-app.post("/interactions", async (req, res) => {
+app.post("/api/interactions", async (req, res) => {
   const { drugs } = req.body; // expecting { "drugs": [1, 3] }
 
   try {
@@ -95,7 +95,7 @@ res.json(uniqueInteractions);
   }
 });
 
-app.get("/interactions", async (req, res) => {
+app.get("/api/interactions", async (req, res) => {
   try {
     const result = await execQuery("SELECT * FROM interactions");
     console.log("GET /interactions result:", result);
