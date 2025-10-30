@@ -49,7 +49,7 @@ app.get("/drugs", async (req, res) => {
       [`%${query}%`]
     );
     console.log("Result rows:", result.rows.length);
-    res.json(result.rows);
+    res.json(result.rows);  
   } catch (err) {
     console.error("Error in /drugs route:", err.message, err.stack); // <-- show full stack
     res.status(500).json({ error: "Server Error" });
@@ -107,10 +107,13 @@ app.get("/interactions", async (req, res) => {
 });
 
 
+module.exports = app;
 
-app.listen(config.port,()=>{
+/*app.listen(config.port,()=>{
      console.log(`server running on port http://localhost:${config.port}`)
-});
+});*/
+
+
 
 
 /*

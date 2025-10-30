@@ -1,1 +1,1 @@
-server running on port http://localhost:${config.port}
+//server running on port http://localhost:${config.port}
