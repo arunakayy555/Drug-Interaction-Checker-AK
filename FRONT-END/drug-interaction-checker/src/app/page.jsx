@@ -1,5 +1,6 @@
 "use client"; // required for using hooks in Next.js App Router
 import { useEffect, useState } from "react";
+const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 import styles from "./page.module.css";
 
 export default function Page() {
@@ -13,7 +14,8 @@ export default function Page() {
   useEffect(() => {
     const fetchAllDrugs = async () => {
       try {
-        const res = await fetch("http://localhost:5000/drugs");
+        //const res = await fetch("http://localhost:5000/drugs");
+        const res = await fetch(`${BASE_URL}/drugs`);
         const data = await res.json();
         setDrugs(data);
       } catch (err) {
@@ -28,9 +30,10 @@ export default function Page() {
       if (searchTerm.length >= 2) {
         const fetchDrugs = async () => {
           try {
-            const res = await fetch(
+            /*const res = await fetch(
               `http://localhost:5000/drugs?q=${searchTerm}`
-            );
+            );*/
+            const res = await fetch(`${BASE_URL}/drugs?q=${searchTerm}`);
             const data = await res.json();
             setSuggestions(
               data.filter((d) => !selectedDrugs.some((s) => s.id === d.id))
@@ -54,7 +57,8 @@ export default function Page() {
     }
 
     try {
-      const res = await fetch("http://localhost:5000/interactions", {
+      //const res = await fetch("http://localhost:5000/interactions", {
+      const res = await fetch(`${BASE_URL}/interactions`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
